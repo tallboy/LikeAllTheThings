@@ -4,6 +4,8 @@
 // @version      0.1
 // @description  A simple script to like all the posts your friends make
 // @author       TALLBOY
+// @updateURL    https://raw.githubusercontent.com/tallboy/LikeAllTheThings/master/likeAllTheThings.js
+// @downloadURL  https://raw.githubusercontent.com/tallboy/LikeAllTheThings/master/likeAllTheThings.js
 // @match        https://www.facebook.com/
 // @grant        none
 // ==/UserScript==

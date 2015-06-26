@@ -61,11 +61,17 @@
 	function initLiker() {
 		var likerContainer = document.createElement('div');
 		var mainContainer = document.getElementById('mainContainer');
-		document.insertBefore(likerContainer, mainContainer);
+		var child = mainContainer.firstChild;
+		mainContainer.insertBefore(likerContainer, child);
 		likerContainer.className = 'likerUI';
 		likerContainer.innerHTML = '<a href="#" class="startLiker">START LIKER</a>';
 
 		var likerUI = document.querySelector('.likerUI');
+		likerUI.addEventListener('click', function(e) {
+			//@TODO: Add toggle state
+			console.log('LIKER CLICKED');
+			startLiker();
+		});
 
 	}
 
@@ -73,7 +79,7 @@
 		setInterval(processLikes, intervalRate);	
 	}
 
-	
+	initLiker();
 
 }(window));
 

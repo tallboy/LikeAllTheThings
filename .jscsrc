@@ -1,0 +1,6 @@
+{
+  "preset": "airbnb",
+  "esnext": true,
+  "fileExtensions": [".js", ".es6", ".esnext"],
+  "excludeFiles": []
+}

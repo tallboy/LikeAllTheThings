@@ -18,9 +18,6 @@
 	var version = 0.2;
 	var clickRate = 1000;
 	var intervalRate = 5000;	
-
-	var mainContain = document.getElementById('mainContainer');
-	var offset = mainContain.offsetTop;
 	
 	function getUnlikedLikeLinks() {
 		var likes = document.querySelectorAll('.UFILikeLink');
@@ -33,18 +30,13 @@
 		console.dir(likesArr);
 
 		return likesArr;
-	};
+	}
 	
-	function scrollToNextLike(like) {
-		var likeOffset = like.offsetTop;
-		mainContain.scrollTo = likeOffset;
-		return true;
-	};
 
 	// Let's try just going to the bottom of the page after processing Likes
 	function scrollToBottomOfPage() {
 		window.scrollTo(0,document.body.scrollHeight);
-	};
+	}
 	
 	function processLikes() {
 		var likes = getUnlikedLikeLinks();
@@ -56,7 +48,7 @@
 			// }, clickRate);
 		};
 		scrollToBottomOfPage();
-	};
+	}
 
 	// INIT & EVENT HANDLERS
 	function initLiker() {

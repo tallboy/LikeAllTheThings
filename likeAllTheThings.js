@@ -14,14 +14,24 @@
 (function(w) {
 	"use strict";
 
+	// OPTIONS
+	var clickRate = 1000;
+	var intervalRate = 5000;	
+
 	var mainContain = document.getElementById('mainContainer');
 	var offset = mainContain.offsetTop;
 	
-	function getLikeButtons() {
+	function getUnlikedLikeLinks() {
 		var likes = document.querySelectorAll('.UFILikeLink');
-		console.dir(likes);
+		var likesArr = [];
+		for (var i=0; i < likes.length; i++) { 
+			if (likes[i]['title'] == 'Like this') {
+				likesArr.push(likes[i]);
+			}
+		}
+		console.dir(likesArr);
 
-		return likes;
+		return likesArr;
 	};
 	
 	function scrollToNextLike(like) {
@@ -29,25 +39,41 @@
 		mainContain.scrollTo = likeOffset;
 		return true;
 	};
+
+	// Let's try just going to the bottom of the page after processing Likes
+	function scrollToBottomOfPage() {
+		window.scrollTo(0,document.body.scrollHeight);
+	};
 	
 	function processLikes() {
-		var likes = getLikeButtons();
+		var likes = getUnlikedLikeLinks();
 		for (var i=0; i < likes.length; i++) {
-			//like['title'] = 'Like this'
-			//like['title'] = 'Unlike this'
-			if (likes[i]['title'] == 'Like this') {
-				console.log('Like me!', likes[i]);
-				// Throttle the clicks a bit so we don't get banned from Facebook
-				setTimeout(function() {
-					likes[i].click();
-				}, 1000);
-			};
-			scrollToNextLike(likes[i]);
+			console.log('Like me!', likes[i]);
+			// Throttle the clicks a bit so we don't get banned from Facebook
+			// setTimeout(function() {
+			// 	likes[i].click();
+			// }, clickRate);
 		};
+		scrollToBottomOfPage();
 	};
 
-	processLikes();
-	setInterval(processLikes, 5000);
+	// INIT & EVENT HANDLERS
+	function initLiker() {
+		var likerContainer = document.createElement('div');
+		var mainContainer = document.getElementById('mainContainer');
+		document.insertBefore(likerContainer, mainContainer);
+		likerContainer.className = 'likerUI';
+		likerContainer.innerHTML = '<a href="#" class="startLiker">START LIKER</a>';
+
+		var likerUI = document.querySelector('.likerUI');
+
+	}
+
+	function startLiker() {
+		setInterval(processLikes, intervalRate);	
+	}
+
+	
 
 }(window));
 

@@ -16,48 +16,46 @@
 
 	// OPTIONS
 	var version = 0.2;
-	var clickRate = 1000;
-	var intervalRate = 5000;	
+	var clickRate = 100;
+	var intervalRate = 6000;	
 	
+
+		// Let's try just going to the bottom of the page after processing Likes
+	function scrollToBottomOfPage() {
+		window.scrollTo(0,document.body.scrollHeight);
+	}
+
+	function likeLike(like) {
+		like.click();
+	}
+
 	function getUnlikedLikeLinks() {
 		var likes = document.querySelectorAll('.UFILikeLink');
 		var likesArr = [];
 		for (var i=0; i < likes.length; i++) { 
 			if (likes[i]['title'] == 'Like this') {
-				likesArr.push(likes[i]);
+				likeLike(likes[i]);
 			}
 		}
-		console.dir(likesArr);
 
 		return likesArr;
 	}
 	
-
-	// Let's try just going to the bottom of the page after processing Likes
-	function scrollToBottomOfPage() {
-		window.scrollTo(0,document.body.scrollHeight);
-	}
 	
 	function processLikes() {
 		var likes = getUnlikedLikeLinks();
-		for (var i=0; i < likes.length; i++) {
-			console.log('Like me!', likes[i]);
-			// Throttle the clicks a bit so we don't get banned from Facebook
-			// setTimeout(function() {
-			// 	likes[i].click();
-			// }, clickRate);
-		};
+		console.dir('LIKES TO PROCESS', likes);
 		scrollToBottomOfPage();
 	}
 
 	// INIT & EVENT HANDLERS
 	function initLiker() {
 		var likerContainer = document.createElement('div');
-		var mainContainer = document.getElementById('mainContainer');
+		var mainContainer = document.getElementById('blueBarNAXAnchor');
 		var child = mainContainer.firstChild;
 		mainContainer.insertBefore(likerContainer, child);
 		likerContainer.className = 'likerUI';
-		likerContainer.innerHTML = '<a href="#" class="startLiker">START LIKER</a>';
+		likerContainer.innerHTML = '<a href="#" class="startLiker" style="position:fixed;left:10px;width:140px;height:20px;padding:5px;background:#f0f0f0;border:1px solid #dadada;border-radius:6px;text-align:center;">START LIKER</a>';
 
 		var likerUI = document.querySelector('.likerUI');
 		likerUI.addEventListener('click', function(e) {

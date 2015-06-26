@@ -16,7 +16,7 @@ This can probably get you banned from some Facebook features until I've experime
 2. When the editor has loaded, click `Install` (*NOT* `Process with Chrome`).
 
 ###TODOs
-* Add a UI to start/stop
-* Scroll along with the clicks
+* Add a UI to start/stop (need stop)
+* Add stats counter
 * Incorporate tag based liking (whitelist / blacklist)
 * Write Greasemonkey instructions

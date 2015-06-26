@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LikeAllTheThings
 // @namespace    http://www.tommy-ryan.com
-// @version      0.1
+// @version      0.2
 // @description  A simple script to like all the posts your friends make
 // @author       TALLBOY
 // @updateURL    https://raw.githubusercontent.com/tallboy/LikeAllTheThings/master/likeAllTheThings.js
@@ -15,6 +15,7 @@
 	"use strict";
 
 	// OPTIONS
+	var version = 0.2;
 	var clickRate = 1000;
 	var intervalRate = 5000;	
 
@@ -69,7 +70,7 @@
 		var likerUI = document.querySelector('.likerUI');
 		likerUI.addEventListener('click', function(e) {
 			//@TODO: Add toggle state
-			console.log('LIKER CLICKED');
+			console.log('LIKER CLICKED, LikeAllTheThings v.' + version);
 			startLiker();
 		});
 
